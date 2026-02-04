@@ -8,12 +8,9 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: .
+    baseDirectory: dist # change to 'build' if you use React
     files:
       - "**/*"
-backend:
-  phases:
-    build:
-      commands:
-        - npm ci
-        - node src/app.js &
+  cache:
+    paths:
+      - node_modules/**/*

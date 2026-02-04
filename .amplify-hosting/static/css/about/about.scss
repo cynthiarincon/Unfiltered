@@ -1,0 +1,520 @@
+// ---------- Variables (Match Landing/Auth) ----------
+$teal: #16a39e;
+$lime: #d4e157;
+$yellow: #E3F564;
+$light-blue: #EBF7FC;
+$blue: #A4C3C4;
+$white: #FFFFFF;
+$black: #000000;
+
+// ---------- Breakpoints ----------
+$tablet: 768px;
+$desktop: 1200px;
+
+// ---------- Mixins ----------
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// ---------- Body ----------
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background-image: url('/img/background2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: $black;
+  min-height: 100vh;
+}
+
+// ---------- Main Container ----------
+.about {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+// ---------- Logo Header (Animated!) ----------
+.about__sec {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: $white;
+  border: 4px solid $black;
+  border-radius: 16px;
+  padding: 1.2rem 2.2rem;
+  width: max-content;
+  margin: 0 auto 3rem;
+  box-shadow: 5px 5px 0px $black;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.about__title--prefix {
+  color: $black;
+}
+
+.about__title--name {
+  background: linear-gradient(135deg, $teal, $lime);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background: linear-gradient(135deg, $teal, $lime);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  50% {
+    background: linear-gradient(135deg, $lime, $teal);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+// ---------- About Intro (Fun Card) ----------
+.about-intro {
+  background: linear-gradient(135deg, $yellow 0%, $lime 100%);
+  border: 4px solid $black;
+  border-radius: 30px;
+  padding: 2.8rem 2.2rem;
+  margin-bottom: 4rem;
+  box-shadow: 8px 8px 0px $black;
+  position: relative;
+  
+
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: $black;
+    margin: 0 0 0.8rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &__sub-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: $teal;
+    margin: 0 0 2rem;
+    text-align: center;
+    font-style: italic;
+  }
+
+  &__body {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: $black;
+    margin-bottom: 1.4rem;
+    text-align: center;
+    font-weight: 500;
+    
+    strong {
+      color: $teal;
+      font-weight: 700;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ---------- Team Section ----------
+.team {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  padding: 0 0 3rem;
+  margin-bottom: 2rem;
+
+  .team-member {
+    @include center;
+    background: $white;
+    border: 4px solid $black;
+    border-radius: 25px;
+    padding: 2.2rem 1.8rem;
+    box-shadow: 6px 6px 0px $black;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 10px 10px 0px $black;
+    }
+
+    &__img {
+      height: 180px;
+      width: 180px;
+      border-radius: 100%;
+      border: 4px solid $black;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      box-shadow: 4px 4px 0px $teal;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover &__img {
+      transform: scale(1.05);
+    }
+
+    &__name {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 0.7rem;
+      color: $black;
+      text-align: center;
+    }
+
+    &__role {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0;
+      color: $black;
+      background: #18AFAA;
+      padding: 0.6rem 1.7rem;
+      border-radius: 20px;
+      border: 2px solid $black;
+    }
+  }
+}
+
+// ---------- Contact Section ----------
+.contact {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 0 4rem;
+
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: $black;
+    margin: 2rem 0 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &__message {
+    text-align: center;
+    font-size: 1.25rem;
+    color: $black;
+    margin: 0 0 2rem;
+    background: $white;
+    padding: 1.2rem;
+    border-radius: 15px;
+    border: 3px solid $black;
+    line-height: 1.6;
+  }
+  
+  .contact-form {
+    @include center;
+    align-items: stretch;
+    background: $light-blue;
+    border: 4px solid $black;
+    border-radius: 25px;
+    padding: 2.8rem 2.2rem;
+    gap: 1.7rem;
+    box-shadow: 8px 8px 0px $black;
+
+    &__feedback {
+      display: none;
+    }
+
+    label {
+      color: $black;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      
+      &:after {
+        content: " *";
+        color: $teal;
+        font-size: 1.2rem;
+      }
+    }
+
+    input,
+    textarea,
+    select {
+      border: 4px solid $black;
+      border-radius: 12px;
+      background: $white;
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.1rem;
+      width: 100%;
+      padding: 1.1rem;
+      transition: all 0.2s;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: $teal;
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 0px $teal;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    #character-output {
+      font-size: 1rem;
+      color: rgba($black, 0.6);
+      margin: -0.5rem 0 0;
+      text-align: right;
+    }
+
+    &__btn {
+      background: $yellow;
+      border: 4px solid $black;
+      border-radius: 999px;
+      padding: 1.3rem 4.5rem;
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 5px 0 $black;
+      margin-top: 1rem;
+      align-self: center;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 0 $black;
+      }
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 $black;
+      }
+    }
+  }
+}
+
+.error {
+  border-color: red !important;
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// ---------- Back to Home Button (Non-logged-in users) ----------
+.back-to-home {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1000;
+}
+
+.back-btn {
+  display: inline-block;
+  background: $yellow;
+  border: 4px solid $black;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: $black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 0 $black;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 $black;
+    background: $lime;
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 2px 2px 0 $black;
+  }
+}
+
+.footer{
+  text-align: center;
+  font-weight: 700;
+}
+
+// ---------- Tablet (768px+) ----------
+@media screen and (min-width: $tablet) {
+  .about__sec {
+    font-size: 3.8rem;
+    padding: 1.4rem 2.8rem;
+  }
+
+  .about-intro {
+    padding: 3.5rem 3.5rem;
+    
+    &__title {
+      font-size: 3.3rem;
+    }
+
+    &__sub-title {
+      font-size: 1.9rem;
+    }
+
+    &__body {
+      font-size: 1.35rem;
+    }
+  }
+
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.8rem;
+
+    .team-member {
+      padding: 2.5rem 2rem;
+
+      &__img {
+        height: 200px;
+        width: 200px;
+      }
+
+      &__name {
+        font-size: 2.2rem;
+      }
+
+      &__role {
+        font-size: 1.45rem;
+      }
+    }
+  }
+
+  .contact {
+    max-width: 700px;
+
+    &__title {
+      font-size: 3.2rem;
+    }
+
+    &__message {
+      font-size: 1.35rem;
+    }
+
+    .contact-form {
+      padding: 3.2rem 2.8rem;
+
+      label {
+        font-size: 1.1rem;
+      }
+
+      input,
+      textarea,
+      select {
+        font-size: 1.15rem;
+        padding: 1.2rem;
+      }
+
+      textarea {
+        min-height: 150px;
+      }
+
+      &__btn {
+        padding: 1.4rem 5rem;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .back-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    box-shadow: 4px 4px 0 $black;
+  }
+}
+
+// ---------- Desktop (1200px+) ----------
+@media (min-width: $desktop) {
+  .about__sec {
+    font-size: 4.2rem;
+    padding: 1.6rem 3rem;
+  }
+
+  .about-intro {
+    &__title {
+      font-size: 3.5rem;
+    }
+
+    &__sub-title {
+      font-size: 2rem;
+    }
+
+    &__body {
+      font-size: 1.4rem;
+    }
+  }
+
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.2rem;
+
+    .team-member {
+      &__img {
+        height: 220px;
+        width: 220px;
+      }
+
+      &__name {
+        font-size: 2.3rem;
+      }
+
+      &__role {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .contact {
+    &__title {
+      font-size: 3.5rem;
+    }
+
+    &__message {
+      font-size: 1.4rem;
+    }
+
+    .contact-form {
+      &__btn {
+        font-size: 1.35rem;
+      }
+    }
+  }
+
+  .back-btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+  }
+}

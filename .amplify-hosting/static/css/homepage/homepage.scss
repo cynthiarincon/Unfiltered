@@ -1,0 +1,689 @@
+// ---------- Variables ----------
+$teal: #abc6cd; // <-- Fix color to match other pages variable
+$lime: #d4e157;
+$yellow: #e3f564;
+$light-blue: #ebf7fc;
+$white: #ffffff;
+$black: #000000;
+$bg-color: #ebf7fc;
+$text-area-bg: #fefefe;
+$text-area: #999;
+
+// ---------- Reset ----------
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+}
+
+// ---------- Body Styles ----------
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $bg-color;
+  font-family: "Open Sans", sans-serif;
+}
+
+// ============ MOBILE STYLES ============
+.header-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Title Section Styles
+.title-section {
+  padding: 70px 0px 10px 15px;
+  margin-bottom: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 200;
+    padding-left: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .user-name {
+    font-weight: 700;
+  }
+}
+
+// Profile Section Styles
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  height: 100px;
+  padding: 0px 15px 0 0;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+
+  .profile-text {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
+}
+
+// Weekday Section Styles
+.week-days {
+  display: flex;
+  justify-content: center;
+}
+
+.days-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  gap: 5px;
+
+  .day {
+    text-align: center;
+    background-color: $teal;
+    width: 45px;
+    border-radius: 30px;
+
+    span {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0px 0 10px 0;
+    }
+
+    p {
+      margin: 10px 0 5px 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
+
+// Current day color
+.day.today {
+  background-color: $yellow;
+  color: $black;
+}
+
+// Content Section Styles
+.content-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+// Box / Container Layout
+.mood-section,
+.journal-section,
+.journal-history,
+.graph-section {
+  background-color: rgba(255, 255, 255, 0.85);
+  margin: 15px 15px 10px 15px;
+  padding: 20px 10px;
+  border-radius: 30px;
+  border: 3px solid $black;
+  box-shadow: 6px 6px 0px $black;
+}
+
+//Graph Buttons
+.graph-section {
+  button {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 3px solid $black;
+    background: linear-gradient(135deg, #e2f6f6, #d6f0f0);
+    color: $black;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0 $black;
+    transition:
+      background-color 0.2s,
+      transform 0.1s;
+
+    &:hover {
+      background-color: $teal;
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 $black;
+    }
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+// Mood Section Styles
+.mood-section {
+  text-align: center;
+  padding-top: 0px;
+
+  .mood-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  // Mood Options
+  .mood-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: #f4f6f8;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $teal;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      filter: brightness(0.8); // Active
+      transform: scale(1.05);
+    }
+
+    .emoji {
+      height: 40px;
+      width: 40px;
+      font-size: 30px;
+      @media (min-width: 1024px) {
+        // desktop
+        width: 60px;
+        height: 60px;
+        font-size: 40px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "Open Sans", sans-serif;
+      margin: 0;
+    }
+  }
+}
+
+// Mood Button Backgrounds
+.mood-btn.happy {
+  background: linear-gradient(135deg, #fff1b8, #ffe3a3);
+}
+
+.mood-btn.sad {
+  background: linear-gradient(135deg, #e8f1ff, #dde6f7);
+}
+
+.mood-btn.angry {
+  background: linear-gradient(135deg, #ffe2e2, #ffd6d6);
+}
+
+.mood-btn.anxious {
+  background: linear-gradient(135deg, #fff0d9, #ffe8c8);
+}
+
+.mood-btn.excited {
+  background: linear-gradient(135deg, #e6f9ef, #dcf5ea);
+}
+
+.mood-btn.tired {
+  background: linear-gradient(135deg, #f0e9ff, #e6ddff);
+}
+
+.mood-btn.calm {
+  background: linear-gradient(135deg, #e9f8ff, #ddf2f7);
+}
+
+.mood-btn.stressed {
+  background: linear-gradient(135deg, #fde8f0, #f9dce8);
+}
+
+// Journal History
+.journal-history {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 400px; // <-- set max height to allow scroll
+  overflow-y: auto;
+  border-radius: 20px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+/* Individual Journal Entry */
+.journal-entry {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 3px solid $black;
+  box-shadow: 0 4px 0 $black;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 1.6;
+    margin: 0;
+    color: $black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Entry header */
+.journal-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    border: none;
+    background-color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .journal-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $black;
+    opacity: 0.6;
+  }
+}
+
+/* Entry actions */
+.journal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Delete button */
+.delete-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 3px solid $black;
+  background: linear-gradient(135deg, #ffe2e2, #ffd6d6);
+  color: $black;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 0 $black;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+
+  &:hover {
+    background-color: $teal;
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 $black;
+  }
+}
+
+// Journal form
+.journal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 20px;
+
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  button {
+    width: 100px;
+    align-self: center;
+    padding: 10px 20px;
+    border: 3px solid $black;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 0 $black;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: $yellow;
+    color: $black;
+
+    &:hover {
+      background-color: $teal;
+    }
+  }
+}
+
+/* Title input */
+.journal-section #journalTitle {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 200;
+  line-height: 1.6;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: $text-area-bg;
+  color: $black;
+  outline: none;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
+
+  &::placeholder {
+    color: $text-area;
+    font-style: italic;
+    font-weight: 200;
+  }
+
+  &:focus {
+    border-color: $black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+}
+
+/* Textarea */
+.journal-section textarea {
+  width: 100%;
+  min-height: 250px;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 200;
+  line-height: 1.6;
+  resize: vertical;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: $text-area-bg;
+  color: $black;
+  outline: none;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
+
+  &::placeholder {
+    color: $text-area;
+    font-style: italic;
+  }
+
+  &:focus {
+    border-color: $black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+}
+
+// Reserved Rights Text
+.reserved-rights {
+  text-align: center;
+  margin: 20px 0 100px 0px;
+
+  p {
+    color: $black;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+
+
+// ============ TABLET STYLES ============
+@media (min-width: 768px) {
+  .header-section {
+    padding-bottom: 30px;
+  }
+  // Title Section Styles
+  .title-section {
+    padding: 30px 15px 0 40px;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+  }
+
+  // Page Layout Styling
+  .content-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "week . ."
+      "journal journal graph"
+      "journal journal mood"
+      "history history history";
+
+    gap: 0px;
+  }
+
+  // Areas Styling
+  .journal-section {
+    grid-area: journal;
+  }
+
+  .week-days {
+    grid-area: week;
+  }
+
+  .graph-section {
+    grid-area: graph;
+  }
+
+  .mood-section {
+    grid-area: mood;
+    margin-left: 0;
+  }
+
+  .journal-history {
+    grid-area: history;
+    max-height: 500px;
+  }
+}
+
+// ============ MODAL ============
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    border-radius: 30px;
+    border: 3px solid $black;
+    box-shadow: 6px 6px 0px $black;
+    position: relative;
+    max-width: 600px;
+    margin: 10vh auto;
+    padding: 1.5rem;
+    background: white;
+
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  &__date {
+    margin: 0;
+  }
+
+  &__body {
+    overflow-y: auto;
+    margin-top: 1rem;
+    flex: 1;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+// ============ DESKTOP STYLES ============
+@media (min-width: 1024px) {
+  body {
+    margin-left: 80px;
+  }
+
+  // Title Section Styles
+  .title-section {
+    padding: 60px 15px 0 40px;
+
+    h1 {
+      font-size: 28px;
+    }
+  }
+
+  // Profile Section Styles
+  .profile-section {
+    padding: 30px 40px 0 0;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  // Page Layout Styling
+  .content-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "week   .  ."
+      "journal history graph"
+      "journal history mood";
+    gap: 16px;
+  }
+
+  // Weekday Section Styles
+  .days-container {
+    padding: 40px 0px 0px 0px;
+    gap: 10px;
+    margin-left: 15px;
+  }
+
+  .week-days {
+    display: flex;
+    justify-content: center;
+  }
+
+  //Text Box
+  textarea {
+    height: 570px;
+  }
+
+  // Mood Options
+  .mood-section {
+    .mood-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  button.mood-btn {
+    &.active {
+      filter: brightness(0.8); // Active
+      transform: scale(1.05);
+    }
+  }
+
+  .journal-section {
+    margin-left: 40px;
+  }
+
+  .graph-section,
+  .mood-section {
+    max-width: 480px;
+    margin-right: 40px;
+  }
+
+  .journal-history {
+    grid-area: history;
+    max-height: 800px;
+  }
+
+  // Reserved Right Text
+  .reserved-rights {
+    margin: 180px 0px 0px 0px;
+    p {
+      color: $black;
+      font-size: 16px;
+    }
+  }
+}
