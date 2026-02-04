@@ -14,6 +14,9 @@ const geocodeRoutes = require("./routes/geolocation.js");
 const auth = require("./middleware/auth.js");
 
 const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 //Initializing App
 const app = express();
