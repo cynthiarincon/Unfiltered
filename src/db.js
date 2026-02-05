@@ -7,19 +7,5 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME || 'test',
 });
 
-// Don't crash if database fails - just log it
-connection.connect((err) => {
-  if (err) {
-    console.error('⚠️ Database connection failed:', err.message);
-    console.log('App will run but database features will not work');
-  } else {
-    console.log('✅ Database connected successfully');
-  }
-});
-
-// Prevent app crash on database errors
-connection.on('error', (err) => {
-  console.error('Database error:', err);
-});
-
+// Don't connect automatically - let routes handle it
 module.exports = connection;
